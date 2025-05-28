@@ -1,0 +1,187 @@
+﻿@page
+@model EmployeeManagement.Pages.Employees.IndexModel
+
+@await Component.InvokeAsync("EmployeeStats", new { viewName = "Stats" })
+
+@{
+    ViewData["Title"] = "Lista de Empleados";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <form method="get" class="form-inline">
+            <div class="input-group" style="width: 100%;">
+                <input type="text" class="form-control" asp-for="SearchString" placeholder="Buscar por nombre..." style="max-width: 300px;">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                    @if (!string.IsNullOrEmpty(Model.SearchString))
+                    {
+                        <a asp-page="./Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i>
+                        </a>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-4 text-right">
+        <a asp-page="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Crear
+        </a>
+    </div>
+</div>
+
+<!-- Tabla de empleados responsiva -->
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="white-space: nowrap;">
+                    @Html.DisplayNameFor(model => model.Employees.First().Name)
+                    <div class="d-inline-flex flex-column ms-1">
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="name"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@Model.Employees.PageIndex"
+                           class="sort-arrow @(Model.SortOrder == "name" ? "text-primary" : "text-muted")"
+                           style="line-height: 0.6; font-size: 0.7rem;">
+                            <i class="bi bi-caret-up-fill"></i>
+                        </a>
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="name_desc"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@Model.Employees.PageIndex"
+                           class="sort-arrow @(Model.SortOrder == "name_desc" ? "text-primary" : "text-muted")"
+                           style="line-height: 0.6; font-size: 0.7rem;">
+                            <i class="bi bi-caret-down-fill"></i>
+                        </a>
+                    </div>
+                </th>
+                <th>@Html.DisplayNameFor(model => model.Employees.First().Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Employees.First().Area)</th>
+                <th style="white-space: nowrap;">
+                    @Html.DisplayNameFor(model => model.Employees.First().HireDate)
+                    <div class="d-inline-flex flex-column ms-1">
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="date"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@Model.Employees.PageIndex"
+                           class="sort-arrow @(Model.SortOrder == "date" ? "text-primary" : "text-muted")"
+                           style="line-height: 0.6; font-size: 0.7rem;">
+                            <i class="bi bi-caret-up-fill"></i>
+                        </a>
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="date_desc"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@Model.Employees.PageIndex"
+                           class="sort-arrow @(Model.SortOrder == "date_desc" ? "text-primary" : "text-muted")"
+                           style="line-height: 0.6; font-size: 0.7rem;">
+                            <i class="bi bi-caret-down-fill"></i>
+                        </a>
+                    </div>
+                </th>
+                <th>@Html.DisplayNameFor(model => model.Employees.First().IsActive)</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Employees)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Area)</td>
+                    <td>@Html.DisplayFor(modelItem => item.HireDate)</td>
+                    <td>@(item.IsActive ? "Sí" : "No")</td>
+                    <td class="d-flex flex-wrap gap-1">
+                        <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary" title="Editar">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-info" title="Detalles">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Eliminar">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Paginación -->
+<div class="row mt-4">
+    <div class="col-12">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                @if (Model.Employees.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@(Model.Employees.PageIndex - 1)"
+                           class="page-link">
+                            &laquo; Anterior
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">&laquo; Anterior</span>
+                    </li>
+                }
+
+                @for (var i = 1; i <= Model.Employees.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Employees.PageIndex ? "active" : "")">
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@i"
+                           class="page-link">
+                            @i
+                        </a>
+                    </li>
+                }
+
+                @if (Model.Employees.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a asp-page="./Index"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchString="@Model.CurrentFilter"
+                           asp-route-pageIndex="@(Model.Employees.PageIndex + 1)"
+                           class="page-link">
+                            Siguiente &raquo;
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item disabled">
+                        <span class="page-link">Siguiente &raquo;</span>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- Pie de paginación -->
+<div class="row mt-2">
+    <div class="col-12 text-center">
+        <p class="text-muted">
+            Mostrando del @((Model.Employees.PageIndex - 1) * Model.Employees.PageSize + 1) al
+            @Math.Min(Model.Employees.PageIndex * Model.Employees.PageSize, Model.Employees.TotalCount)
+            de @Model.Employees.TotalCount empleados
+        </p>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@page
+@model EmployeeManagement.Pages.Employees.CreateModel
+
+@{
+    ViewData["Title"] = "Crear Nuevo Empleado";
+}
+
+<div class="container">
+    <h2>Crear Empleado</h2>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-12">
+            <form method="post" class="card p-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Employee.Name" class="form-label"></label> <span class="text-danger">*</span>
+                        <input asp-for="Employee.Name" class="form-control" />
+                        <span asp-validation-for="Employee.Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Employee.Email" class="form-label">
+                            @Html.DisplayNameFor(model => model.Employee.Email) <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="Employee.Email" class="form-control"
+                               type="email"
+                               placeholder="ejemplo@dominio.com"
+                               required />
+                        <span asp-validation-for="Employee.Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row align-items-end">
+                    <div class="col-md-5 mb-3">
+                        <label asp-for="Employee.Area" class="form-label"></label><span class="text-danger">*</span>
+                        <input asp-for="Employee.Area" class="form-control" />
+                        <span asp-validation-for="Employee.Area" class="text-danger"></span>
+                    </div>
+          
+                    <div class="col-md-5 mb-3">
+                        <label asp-for="Employee.HireDate" class="form-label"></label><span class="text-danger">*</span>
+                        <input asp-for="Employee.HireDate" class="form-control"
+                               max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                        <span asp-validation-for="Employee.HireDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="Employee.IsActive" />
+                            <label class="form-check-label" asp-for="Employee.IsActive"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4 gap-2">
+                    <a asp-page="./Index" class="btn btn-outline-secondary"
+                       style="padding: 0.375rem 0.75rem; font-size: 0.925rem;"
+                       title="Volver a la lista">
+                        Atrás
+                    </a>
+                    <button type="submit" class="btn btn-success"
+                            style="padding: 0.375rem 0.75rem; font-size: 0.925rem;">
+                        Crear
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

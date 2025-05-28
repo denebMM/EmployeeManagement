@@ -1,0 +1,18 @@
+﻿@model EmployeeManagement.Models.ViewModels.EmployeeStatsViewModel
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-success">
+                    <h4>Activos: @Model.Active</h4>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-secondary">
+                    <h4>Inactivos: @Model.Inactive</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

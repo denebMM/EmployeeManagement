@@ -1,0 +1,74 @@
+﻿@page
+@model EmployeeManagement.Pages.Employees.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<div class="container">
+    <h2>Eliminar Empleado</h2>
+    <hr />
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-12">
+            <div class="card p-4">
+                <h3 class="text-danger mb-4">¿Estás seguro de que quieres eliminar este empleado?</h3>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <dl class="row">
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.Employee.Name)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.Employee.Name)
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.Employee.Email)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.Employee.Email)
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.Employee.Area)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.Employee.Area)
+                            </dd>
+                        </dl>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <dl class="row">
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.Employee.HireDate)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @Html.DisplayFor(model => model.Employee.HireDate)
+                            </dd>
+                            <dt class="col-sm-4">
+                                @Html.DisplayNameFor(model => model.Employee.IsActive)
+                            </dt>
+                            <dd class="col-sm-8">
+                                @(Model.Employee.IsActive ? "Sí" : "No")
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <form method="post" class="mt-4">
+                    <input type="hidden" asp-for="Employee.Id" />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-page="./Index" class="btn btn-outline-secondary"
+                           style="padding: 0.375rem 0.75rem; font-size: 0.925rem;"
+                           title="Volver a la lista">
+                            Atrás
+                        </a>
+                        <input type="submit" value="Eliminar"
+                               class="btn btn-danger"
+                               style="padding: 0.375rem 0.75rem; font-size: 0.925rem;" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
