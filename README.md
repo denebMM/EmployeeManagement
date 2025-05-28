@@ -22,15 +22,15 @@ Aplicación de gestión de empleados desarrollada con ASP.NET Core Razor Pages 3
 
 ### 1. Clonar el repositorio
 
-<pre> ```  git clone https://github.com/denebMM/employee-management.git ``` </pre>
-<pre> ```  cd employee-management  ``` </pre>
+git clone https://github.com/denebMM/employee-management.git
+cd employee-management
 
 ## En la Terminal de VS
- <pre> ```  cd EmployeeManagement ``` </pre>
+cd EmployeeManagement
   
   luego 
 
-<pre> ```  dotnet ef database update ``` </pre>
+dotnet ef database update
 
 ### Se debe crear la base de datos así:
 
@@ -98,18 +98,20 @@ VALUES
 
 Comando para restaurar los paquetes NuGet:
 
-<pre> ``` dotnet restore``` </pre>
+dotnet restore
 
 ### Compilación del proyecto
 Comando para compilar antes de correr la aplicación:
-<pre> ``` dotnet build ``` </pre> 
+
+dotnet build
 
 ## Compilar el proyecto
-<pre> ```  dotnet build ``` </pre>
+
+dotnet build
 
 ## Ejecutar la aplicación
 
-<pre> ```  dotnet run ``` </pre>
+dotnet run
 
 ### Estructura del Proyecto
 
