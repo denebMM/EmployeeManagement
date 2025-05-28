@@ -112,23 +112,6 @@ dotnet build
 
 dotnet run
 
-### Estructura del Proyecto
-
-EmployeeManagement/
-├── Data/
-│   ├── Repositories/
-│   └── AppDbContext.cs
-├── Migrations/
-│   
-├── Models/
-│   ├── Employee.cs
-│   ├── EmployeeStatsViewModel.cs
-│   └── PaginatedList.cs
-├── Pages/
-│   ├── Employees/
-
-### Características Clave
-
 ## Validaciones Implementadas
 
 Nombre: Solo letras, números y espacios (sin caracteres especiales)
