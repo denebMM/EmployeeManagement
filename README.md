@@ -142,8 +142,8 @@ Campos obligatorios: Todos los campos principales son requeridos
 
 ### Capturas de la Aplicación
 
-![Vista inicial de la aplicación](EmployeeManagement/assets/listaCompleta.png)
-![Crear un Empleado](EmployeeManagement/assets/crear.png)
-![Editar un Empleado](EmployeeManagement/assets/editar.png)
-![Eliminar un Empleado](EmployeeManagement/assets/eliminar.png)
-![Búsqueda](EmployeeManagement/assets/busqueda.png)
+![Vista inicial de la aplicación](assets/listaCompleta.png)
+![Crear un Empleado](assets/crear.png)
+![Editar un Empleado](assets/editar.png)
+![Eliminar un Empleado](assets/eliminar.png)
+![Búsqueda](assets/busqueda.png)
