@@ -32,7 +32,7 @@ cd EmployeeManagement
 
 dotnet ef database update
 
-### Se debe crear la base de datos así:
+### Se debe crear la base de datos :
 
 
 ing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
@@ -68,7 +68,7 @@ Done.
 
 ### Script para insertar empleados
 
-```sql
+
 
 INSERT INTO [dbo].[Employees] ([Name], [Email], [Area], [HireDate], [IsActive])
 VALUES
@@ -95,7 +95,6 @@ VALUES
 
 
 ### 2. Restauración de dependencias
-
 Comando para restaurar los paquetes NuGet:
 
 dotnet restore
