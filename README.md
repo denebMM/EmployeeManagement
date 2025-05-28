@@ -22,15 +22,15 @@ Aplicación de gestión de empleados desarrollada con ASP.NET Core Razor Pages 3
 
 ### 1. Clonar el repositorio
 
- ``` git clone https://github.com/denebMM/employee-management.git ``` 
- ``` cd employee-management  ``` 
+<pre> ```  git clone https://github.com/denebMM/employee-management.git ``` </pre>
+<pre> ```  cd employee-management  ``` </pre>
 
 ## En la Terminal de VS
- ``` cd EmployeeManagement ``` 
+ <pre> ```  cd EmployeeManagement ``` </pre>
   
   luego 
 
- ``` dotnet ef database update ``` 
+<pre> ```  dotnet ef database update ``` </pre>
 
 ### Se debe crear la base de datos así:
 
@@ -98,20 +98,18 @@ VALUES
 
 Comando para restaurar los paquetes NuGet:
 
- ``` dotnet restore ``` 
+<pre> ``` dotnet restore``` </pre>
 
 ### Compilación del proyecto
 Comando para compilar antes de correr la aplicación:
-
- ``` dotnet build ``` 
+<pre> ``` dotnet build ``` </pre> 
 
 ## Compilar el proyecto
-
- ``` dotnet build ``` 
+<pre> ```  dotnet build ``` </pre>
 
 ## Ejecutar la aplicación
 
- ``` dotnet run ``` 
+<pre> ```  dotnet run ``` </pre>
 
 ### Estructura del Proyecto
 
@@ -142,8 +140,8 @@ Campos obligatorios: Todos los campos principales son requeridos
 
 ### Capturas de la Aplicación
 
-![Vista inicial de la aplicación](assets/listaCompleta.png)
-![Crear un Empleado](assets/crear.png)
-![Editar un Empleado](assets/editar.png)
-![Eliminar un Empleado](assets/eliminar.png)
-![Búsqueda](assets/busqueda.png)
+![Vista inicial de la aplicación](EmployeeManagement/assets/listaCompleta.png)
+![Crear un Empleado](EmployeeManagement/assets/crear.png)
+![Editar un Empleado](EmployeeManagement/assets/editar.png)
+![Eliminar un Empleado](EmployeeManagement/assets/eliminar.png)
+![Búsqueda](EmployeeManagement/assets/busqueda.png)
